@@ -174,7 +174,7 @@ export default function Navbar() {
       );
     }
 
-    if (href === "/" || href === "/Home") {
+    if (href === "/" || href === "/Home" || href === "/industries") {
       const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       const isMobileViewport = window.matchMedia("(max-width: 1024px)").matches;
       window.scrollTo({
@@ -182,7 +182,9 @@ export default function Navbar() {
         left: 0,
         behavior: reduceMotion || isMobileViewport ? "auto" : "smooth",
       });
-      window.dispatchEvent(new CustomEvent(HOME_HERO_RESET_EVENT));
+      if (href === "/" || href === "/Home") {
+        window.dispatchEvent(new CustomEvent(HOME_HERO_RESET_EVENT));
+      }
     }
   };
 

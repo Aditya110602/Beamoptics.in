@@ -108,7 +108,16 @@ const INDUSTRY_ICON_MAP = {
 function normalizeIndustryId(value) {
   const key = (value || "").trim().toLowerCase();
   if (!key) return "";
-  if (key === "human-diagnostics" || key === "human-dx" || key === "health") return "public-health";
+  if (
+    key === "human-diagnostics" ||
+    key === "human-dx" ||
+    key === "health" ||
+    key === "human-health" ||
+    key === "human-healthcare" ||
+    key === "humanhealth"
+  ) {
+    return "public-health";
+  }
   if (key === "public-healthcare") return "public-health";
   return key;
 }
@@ -117,27 +126,56 @@ export default function IndustriesPage() {
   const { industryId } = useParams();
   const navigate = useNavigate();
   const sectionRefs = useRef({});
+  const scrollTimersRef = useRef([]);
+  const scrollRequestRef = useRef(0);
   const [activeId, setActiveId] = useState("dairy");
   const [stickyTop, setStickyTop] = useState(104);
 
+  const clearPendingScrolls = useCallback(() => {
+    scrollTimersRef.current.forEach((timerId) => window.clearTimeout(timerId));
+    scrollTimersRef.current = [];
+  }, []);
+
   const scrollToSection = useCallback((id, preferredBehavior = "smooth") => {
-    const node = sectionRefs.current[id];
-    if (!node) return;
+    if (!id) return false;
+    const node = sectionRefs.current[id] || document.getElementById(`in-${id}`);
+    if (!node) return false;
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const top = Math.max(node.getBoundingClientRect().top + window.scrollY - stickyTop - 10, 0);
-    window.scrollTo({
-      top,
-      left: 0,
+    node.scrollIntoView({
       behavior: reduceMotion ? "auto" : preferredBehavior,
+      block: "start",
+      inline: "nearest",
     });
+
+    // One deterministic correction pass keeps the final resting offset stable.
+    const targetTop = Math.max(node.getBoundingClientRect().top + window.scrollY - stickyTop - 10, 0);
+    if (Math.abs(window.scrollY - targetTop) > 4) {
+      window.scrollTo({ top: targetTop, left: 0, behavior: "auto" });
+    }
+
+    return true;
   }, [stickyTop]);
 
   const scrollToSectionWithRetry = useCallback((id, preferredBehavior = "smooth") => {
-    scrollToSection(id, preferredBehavior);
-    window.setTimeout(() => scrollToSection(id, "auto"), 120);
-    window.setTimeout(() => scrollToSection(id, "auto"), 280);
-  }, [scrollToSection]);
+    if (!id) return;
+
+    scrollRequestRef.current += 1;
+    const currentRequest = scrollRequestRef.current;
+    clearPendingScrolls();
+
+    const attemptDelays = [0, 120, 280, 480, 760, 1100, 1500];
+    attemptDelays.forEach((delay, index) => {
+      const timerId = window.setTimeout(() => {
+        if (scrollRequestRef.current !== currentRequest) return;
+        const behavior = index === 0 ? preferredBehavior : "auto";
+        scrollToSection(id, behavior);
+      }, delay);
+      scrollTimersRef.current.push(timerId);
+    });
+  }, [clearPendingScrolls, scrollToSection]);
+
+  useEffect(() => () => clearPendingScrolls(), [clearPendingScrolls]);
 
   useEffect(() => {
     const updateStickyOffset = () => {
@@ -195,9 +233,7 @@ export default function IndustriesPage() {
     setActiveId(id);
     navigate(`/industries/${id}`, { scroll: false });
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    window.requestAnimationFrame(() =>
-      scrollToSectionWithRetry(id, reduceMotion ? "auto" : "smooth")
-    );
+    scrollToSectionWithRetry(id, reduceMotion ? "auto" : "smooth");
   };
 
   return (

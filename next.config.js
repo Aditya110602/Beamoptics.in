@@ -49,6 +49,26 @@ const nextConfig = {
         destination: "/about",
         permanent: true,
       },
+      {
+        source: "/industries/human-health",
+        destination: "/industries/public-health",
+        permanent: true,
+      },
+      {
+        source: "/industries/human-healthcare",
+        destination: "/industries/public-health",
+        permanent: true,
+      },
+      {
+        source: "/industries/all",
+        destination: "/industries",
+        permanent: true,
+      },
+      {
+        source: "/industries/all-industries",
+        destination: "/industries",
+        permanent: true,
+      },
     ];
   },
 };
