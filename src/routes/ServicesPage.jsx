@@ -123,7 +123,6 @@ const SERVICE_CATALOG = [
           "Supports repeat testing programs and workflow continuity.",
         ],
         imageUrl: null,
-        hideMedia: true,
         brochureUrl: null,
         alt: "Somatic Cell Test Cassettes",
       },
@@ -879,23 +878,6 @@ export default function ServicesPage() {
           grid-column: 1;
           justify-self: end;
           transform: translate3d(-26px, 0, 0) scale(0.99);
-        }
-
-        .sv-item-no-media {
-          grid-template-columns: 92px minmax(280px, 1fr);
-        }
-
-        .sv-item-no-media .sv-item-media {
-          display: none;
-        }
-
-        .sv-item-no-media .sv-item-mid {
-          grid-column: 1;
-        }
-
-        .sv-item-no-media .sv-item-info {
-          grid-column: 2;
-          justify-self: start;
         }
 
         .sv-item-live .sv-item-media {
@@ -1809,7 +1791,7 @@ export default function ServicesPage() {
                   >
                     <article
                       data-product-id={product.id}
-                      className={`sv-item-row sv-item-left${product.hideMedia ? " sv-item-no-media" : ""}${
+                      className={`sv-item-row sv-item-left${
                         visibleProducts[product.id] ? " sv-item-live" : ""
                       }`}
                     >
