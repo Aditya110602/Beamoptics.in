@@ -217,7 +217,7 @@ const EXPERTISE_CARDS = [
   },
   {
     title: "Cutting-Edge Technology",
-    copy: "BeamOptics develops FTIR-based optical instrumentation for reliable, repeatable analysis across healthcare, dairy quality, food safety, and pharmaceutical screening workflows.",
+    copy: "BeamOptics combines FTIR optics, embedded electronics, and practical workflow design to deliver stable, repeatable analysis for real-world diagnostic and quality-control use.",
     image: expertiseTechnologyImageSrc,
     alt: "Cutting-edge technology",
     chip: "FTIR Innovation",
