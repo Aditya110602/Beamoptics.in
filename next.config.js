@@ -55,6 +55,26 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/services/handheld-produce-scanner",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/services/handheld-produce-scanner/:path*",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/handheld-produce-scanner.html",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/Handheld-Produce-Scanner",
+        destination: "/services",
+        permanent: true,
+      },
+      {
         source: "/insight",
         destination: "/about",
         permanent: true,

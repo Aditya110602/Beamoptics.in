@@ -217,7 +217,7 @@ const EXPERTISE_CARDS = [
   },
   {
     title: "Cutting-Edge Technology",
-    copy: "BeamOptics has developed a patent-pending Fourier Transform Infrared (FTIR) interferometer architecture focused on stable signal quality, repeatable measurement performance, and practical field deployment.",
+    copy: "BeamOptics develops FTIR-based optical instrumentation for reliable, repeatable analysis across healthcare, dairy quality, food safety, and pharmaceutical screening workflows.",
     image: expertiseTechnologyImageSrc,
     alt: "Cutting-edge technology",
     chip: "FTIR Innovation",
