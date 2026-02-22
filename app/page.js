@@ -2,7 +2,7 @@ import Home from "@/routes/Home";
 import { buildMetadata, SITE_URL } from "@/lib/seo";
 
 const pageDescription =
-  "BeamOptics develops field-ready diagnostics and analytical systems for healthcare, dairy, food safety, and industrial quality workflows.";
+  "BeamOptics Scientific Pvt. Ltd. develops field-ready FTIR diagnostics and analytical systems for healthcare, dairy quality, food safety, and pharmaceutical workflows.";
 
 const homeSchema = {
   "@context": "https://schema.org",

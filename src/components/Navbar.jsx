@@ -27,7 +27,7 @@ const NAV_LINKS = [
     ],
   },
   {
-    label: "We Offer",
+    label: "Services",
     href: "/services",
     dropdown: [
       { label: "Diagnostic",                 href: "/services#diagnostic" },

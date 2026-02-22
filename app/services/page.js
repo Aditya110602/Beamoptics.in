@@ -2,7 +2,7 @@ import ServicesPage from "@/routes/ServicesPage";
 import { buildMetadata, SITE_URL } from "@/lib/seo";
 
 const pageDescription =
-  "Explore BeamOptics diagnostic and analytical product lines, including FTIR analyzers, RedCheck platforms, and lab screening solutions.";
+  "Explore BeamOptics products and services, including FTIR analyzers, RedCheck platforms, and diagnostic and analytical screening solutions.";
 
 const servicesSchema = {
   "@context": "https://schema.org",
@@ -13,7 +13,7 @@ const servicesSchema = {
     name: "BeamOptics Scientific Pvt. Ltd.",
     url: SITE_URL,
   },
-  name: "BeamOptics Services",
+  name: "BeamOptics Products and Services",
   description: pageDescription,
   areaServed: "IN",
   url: `${SITE_URL}/services`,
@@ -39,7 +39,7 @@ const breadcrumbSchema = {
 };
 
 export const metadata = buildMetadata({
-  title: "Services",
+  title: "Products and Services",
   description: pageDescription,
   path: "/services",
   keywords: ["FTIR analyzer", "HbA1c analyzer", "hemoglobin meter", "analytical instruments India"],

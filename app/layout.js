@@ -3,6 +3,7 @@ import SiteFrame from "@/components/SiteFrame";
 import {
   SITE_URL,
   SITE_NAME,
+  SITE_LEGAL_NAME,
   SITE_TITLE,
   DEFAULT_DESCRIPTION,
   DEFAULT_KEYWORDS,
@@ -29,9 +30,9 @@ export const metadata = {
   },
   description: DEFAULT_DESCRIPTION,
   applicationName: SITE_NAME,
-  creator: "BeamOptics Scientific Pvt. Ltd.",
-  publisher: "BeamOptics Scientific Pvt. Ltd.",
-  authors: [{ name: "BeamOptics Scientific Pvt. Ltd." }],
+  creator: SITE_LEGAL_NAME,
+  publisher: SITE_LEGAL_NAME,
+  authors: [{ name: SITE_LEGAL_NAME }],
   keywords: DEFAULT_KEYWORDS,
   category: "Healthcare and analytical instrumentation",
   alternates: {
@@ -91,7 +92,8 @@ export const viewport = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "BeamOptics Scientific Pvt. Ltd.",
+  name: SITE_LEGAL_NAME,
+  legalName: SITE_LEGAL_NAME,
   url: SITE_URL,
   logo: `${SITE_URL}/Logo.png`,
   email: "info@beamoptics.in",
@@ -103,12 +105,25 @@ const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: SITE_NAME,
+  alternateName: ["Beam Optics", SITE_LEGAL_NAME],
   url: SITE_URL,
   inLanguage: "en-IN",
   publisher: {
     "@type": "Organization",
-    name: "BeamOptics Scientific Pvt. Ltd.",
+    name: SITE_LEGAL_NAME,
   },
+};
+
+const siteNavigationSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: [
+    { "@type": "SiteNavigationElement", position: 1, name: "Home", url: `${SITE_URL}/` },
+    { "@type": "SiteNavigationElement", position: 2, name: "About Us", url: `${SITE_URL}/about` },
+    { "@type": "SiteNavigationElement", position: 3, name: "Services", url: `${SITE_URL}/services` },
+    { "@type": "SiteNavigationElement", position: 4, name: "Industries", url: `${SITE_URL}/industries` },
+    { "@type": "SiteNavigationElement", position: 5, name: "Contact Us", url: `${SITE_URL}/contact` },
+  ],
 };
 
 export default function RootLayout({ children }) {
@@ -132,6 +147,10 @@ export default function RootLayout({ children }) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteNavigationSchema) }}
         />
       </head>
       <body>

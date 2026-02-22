@@ -1,10 +1,12 @@
 const SITE_URL = "https://beamoptics.in";
 const SITE_NAME = "BeamOptics";
-const SITE_TITLE = "BeamOptics | Precision Diagnostics and Analytical Instruments";
+const SITE_LEGAL_NAME = "BeamOptics Scientific Pvt. Ltd.";
+const SITE_TITLE = `${SITE_LEGAL_NAME} | Precision Diagnostics and Analytical Instruments`;
 const DEFAULT_DESCRIPTION =
-  "BeamOptics builds precision diagnostic and analytical instruments for healthcare, dairy quality, food safety, and pharmaceutical solvent screening workflows.";
+  "BeamOptics Scientific Pvt. Ltd. develops precision FTIR and diagnostic instrumentation for healthcare, dairy quality, food safety, and pharmaceutical screening.";
 const DEFAULT_KEYWORDS = [
   "BeamOptics",
+  "Beam Optics",
   "precision diagnostics",
   "analytical instruments",
   "FTIR milk analyzer",
@@ -94,6 +96,7 @@ function buildMetadata({
 export {
   SITE_URL,
   SITE_NAME,
+  SITE_LEGAL_NAME,
   SITE_TITLE,
   DEFAULT_DESCRIPTION,
   DEFAULT_KEYWORDS,

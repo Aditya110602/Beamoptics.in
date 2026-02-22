@@ -14,6 +14,71 @@ const nextConfig = {
         destination: "/",
         permanent: true,
       },
+      {
+        source: "/about-us",
+        destination: "/about",
+        permanent: true,
+      },
+      {
+        source: "/contact-us",
+        destination: "/contact",
+        permanent: true,
+      },
+      {
+        source: "/we-offer",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/products",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/product",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/services-and-products",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/handheld-produce-scanner",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/handheld-produce-scanner/:path*",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/insight",
+        destination: "/about",
+        permanent: true,
+      },
+      {
+        source: "/insights",
+        destination: "/about",
+        permanent: true,
+      },
+      {
+        source: "/inslight",
+        destination: "/about",
+        permanent: true,
+      },
+      {
+        source: "/press-kit",
+        destination: "/about",
+        permanent: true,
+      },
+      {
+        source: "/presskit",
+        destination: "/about",
+        permanent: true,
+      },
     ];
   },
 };

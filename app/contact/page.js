@@ -58,12 +58,12 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-    { "@type": "ListItem", position: 2, name: "Contact", item: `${SITE_URL}/contact` },
+    { "@type": "ListItem", position: 2, name: "Contact Us", item: `${SITE_URL}/contact` },
   ],
 };
 
 export const metadata = buildMetadata({
-  title: "Contact Us",
+  title: "Contact BeamOptics",
   description: pageDescription,
   path: "/contact",
   keywords: ["BeamOptics contact", "diagnostics support India", "analytical instruments inquiry"],
