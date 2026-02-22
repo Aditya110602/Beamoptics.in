@@ -1,0 +1,40 @@
+BEAM Website Image Manifest
+
+All externally referenced website images were downloaded to local assets for hosting stability and faster render.
+
+about/
+- hero-science.jpg
+- story-lab.jpg
+- factory.jpg
+- cert-microscope.jpg
+
+contact/
+- contact-hero.jpg
+
+home/
+- hero-science.jpg
+- facility.jpg
+- dairy-quality.jpg
+- medical-lab.jpg
+- research-lab.jpg
+- food-testing.jpg
+- cta-lab-team.jpg
+
+industries/
+- hero.jpg
+- dairy.jpg
+- food-products.jpg
+- veterinary.jpg
+- pharmaceutical.jpg
+
+services/
+- diagnostic/
+  - ftir-main.jpg
+  - ftir-atr.jpg
+  - ftir-pg-glycerin-machine.jpeg
+  - mbrt-unit.jpg
+- analytics/
+  - hb-machine.jpeg
+  - hb-device-stock.jpg
+  - hba1c-device.jpg
+  - lateral-flow.jpg
