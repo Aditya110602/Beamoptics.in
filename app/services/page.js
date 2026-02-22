@@ -2,7 +2,7 @@ import ServicesPage from "@/routes/ServicesPage";
 import { buildMetadata, SITE_URL } from "@/lib/seo";
 
 const pageDescription =
-  "Explore BeamOptics products and services, including FTIR analyzers, RedCheck platforms, and diagnostic and analytical screening solutions.";
+  "Explore BeamOptics products and services: FTIR Milk Analyzer, FTIR PG/Glycerine Analyzer, RedCheck Hb, and RedCheck HbA1c for rapid diagnostic and analytical screening.";
 
 const servicesSchema = {
   "@context": "https://schema.org",

@@ -2,7 +2,7 @@ import Home from "@/routes/Home";
 import { buildMetadata, SITE_URL } from "@/lib/seo";
 
 const pageDescription =
-  "BeamOptics Scientific Pvt. Ltd. develops field-ready FTIR diagnostics and analytical systems for healthcare, dairy quality, food safety, and pharmaceutical workflows.";
+  "BeamOptics Scientific Pvt. Ltd. builds FTIR-based diagnostic and analytical instruments, including FTIR Milk Analyzer, RedCheck Hb, and RedCheck HbA1c solutions for healthcare, dairy, food safety, and pharmaceutical screening.";
 
 const homeSchema = {
   "@context": "https://schema.org",

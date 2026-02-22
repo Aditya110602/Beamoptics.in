@@ -2,7 +2,7 @@ import AboutPage from "@/routes/AboutPage";
 import { buildMetadata, SITE_URL } from "@/lib/seo";
 
 const pageDescription =
-  "Learn about BeamOptics Scientific Pvt. Ltd., our precision optics expertise, diagnostics roadmap, and mission for accessible analytical science.";
+  "BeamOptics Scientific Pvt. Ltd. is an Indian instrumentation company focused on precision optics, FTIR platforms, and affordable diagnostic innovation for public-health and quality-control programs.";
 
 const aboutSchema = {
   "@context": "https://schema.org",

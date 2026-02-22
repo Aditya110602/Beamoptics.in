@@ -2083,11 +2083,10 @@ export default function Home() {
                 Built for <em>Accuracy</em>, Designed for <em>Deployment</em>
               </h2>
               <p className="hm-copy">
-                BeamOptics Scientific Pvt. Ltd. is an emerging Indian deep-tech company
-                specializing in precision photonics and instrumentation. We aim to become a global
-                leader in precision optics by making sophisticated scientific tools accessible and
-                affordable, while delivering high-accuracy, field-ready analytical and diagnostic
-                solutions aligned with national healthcare and quality-control initiatives.
+                BeamOptics Scientific Pvt. Ltd. designs and manufactures FTIR and rapid diagnostic
+                instruments for healthcare, dairy quality, food safety, and pharmaceutical screening.
+                Our products are built for accurate results, field deployment, and affordable scaling
+                across laboratories and frontline programs.
               </p>
             </Reveal>
 
