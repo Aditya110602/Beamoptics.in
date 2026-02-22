@@ -19,16 +19,46 @@ function shouldRedirectDeprecatedScannerPath(pathname) {
   return hasHandheldScannerWords || hasLegacySlug;
 }
 
+function shouldRedirectDeprecatedServicesPath(pathname) {
+  let normalizedPath = (pathname || "/").toLowerCase();
+  try {
+    normalizedPath = decodeURIComponent(normalizedPath);
+  } catch {
+    // Keep raw path when URL decoding fails.
+  }
+
+  const legacyServicePaths = new Set([
+    "/we-offer",
+    "/products",
+    "/product",
+    "/services-and-products",
+    "/handheld-produce-scanner.html",
+    "/handheld-produce-scanner",
+    "/handheld-produce-scanner/",
+    "/services/handheld-produce-scanner",
+    "/services/handheld-produce-scanner/",
+  ]);
+
+  if (legacyServicePaths.has(normalizedPath)) return true;
+  if (normalizedPath.startsWith("/handheld-produce-scanner/")) return true;
+  if (normalizedPath.startsWith("/services/handheld-produce-scanner/")) return true;
+
+  return false;
+}
+
 export function proxy(request) {
   const { pathname } = request.nextUrl;
 
-  if (shouldRedirectDeprecatedScannerPath(pathname)) {
+  if (
+    shouldRedirectDeprecatedServicesPath(pathname) ||
+    shouldRedirectDeprecatedScannerPath(pathname)
+  ) {
     const redirectUrl = request.nextUrl.clone();
     redirectUrl.pathname = "/services";
     redirectUrl.search = "";
 
     const response = NextResponse.redirect(redirectUrl, 308);
-    response.headers.set("x-robots-tag", "noindex, nofollow");
+    response.headers.set("x-robots-tag", "noindex, nofollow, noarchive");
     return response;
   }
 
