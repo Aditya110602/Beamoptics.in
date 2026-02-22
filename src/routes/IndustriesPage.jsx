@@ -136,6 +136,11 @@ export default function IndustriesPage() {
     scrollTimersRef.current = [];
   }, []);
 
+  const cancelScheduledScroll = useCallback(() => {
+    scrollRequestRef.current += 1;
+    clearPendingScrolls();
+  }, [clearPendingScrolls]);
+
   const scrollToSection = useCallback((id, preferredBehavior = "smooth") => {
     if (!id) return false;
     const node = sectionRefs.current[id] || document.getElementById(`in-${id}`);
@@ -164,7 +169,7 @@ export default function IndustriesPage() {
     const currentRequest = scrollRequestRef.current;
     clearPendingScrolls();
 
-    const attemptDelays = [0, 120, 280, 480, 760, 1100, 1500];
+    const attemptDelays = [0, 120, 280, 460];
     attemptDelays.forEach((delay, index) => {
       const timerId = window.setTimeout(() => {
         if (scrollRequestRef.current !== currentRequest) return;
@@ -176,6 +181,33 @@ export default function IndustriesPage() {
   }, [clearPendingScrolls, scrollToSection]);
 
   useEffect(() => () => clearPendingScrolls(), [clearPendingScrolls]);
+
+  useEffect(() => {
+    const cancelOnKeyboardScroll = (event) => {
+      const key = event.key;
+      if (
+        key === "ArrowDown" ||
+        key === "ArrowUp" ||
+        key === "PageDown" ||
+        key === "PageUp" ||
+        key === "Home" ||
+        key === "End" ||
+        key === " "
+      ) {
+        cancelScheduledScroll();
+      }
+    };
+
+    window.addEventListener("wheel", cancelScheduledScroll, { passive: true });
+    window.addEventListener("touchmove", cancelScheduledScroll, { passive: true });
+    window.addEventListener("keydown", cancelOnKeyboardScroll);
+
+    return () => {
+      window.removeEventListener("wheel", cancelScheduledScroll);
+      window.removeEventListener("touchmove", cancelScheduledScroll);
+      window.removeEventListener("keydown", cancelOnKeyboardScroll);
+    };
+  }, [cancelScheduledScroll]);
 
   useEffect(() => {
     const updateStickyOffset = () => {
@@ -231,7 +263,11 @@ export default function IndustriesPage() {
   const handleOptionClick = (id) => {
     if (!INDUSTRY_MAP[id]) return;
     setActiveId(id);
-    navigate(`/industries/${id}`, { scroll: false });
+    const current = INDUSTRY_MAP[normalizeIndustryId(industryId)] ? normalizeIndustryId(industryId) : "dairy";
+    if (current !== id) {
+      navigate(`/industries/${id}`, { scroll: false });
+      return;
+    }
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     scrollToSectionWithRetry(id, reduceMotion ? "auto" : "smooth");
   };

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import NextLink from "next/link";
 import { useParams as useNextParams, usePathname, useRouter } from "next/navigation";
 
@@ -47,7 +47,7 @@ export function useLocation() {
 export function useNavigate() {
   const router = useRouter();
 
-  return (to, options = {}) => {
+  return useCallback((to, options = {}) => {
     if (typeof to === "number") {
       if (to === -1) {
         router.back();
@@ -68,7 +68,7 @@ export function useNavigate() {
     }
 
     router.push(target, options?.scroll === false ? { scroll: false } : undefined);
-  };
+  }, [router]);
 }
 
 export function useParams() {
