@@ -235,9 +235,10 @@ export default function Navbar() {
           flex-shrink: 0;
         }
         .nb-logo-img {
-          height: 54px;
+          height: 52px;
+          max-height: 58px;
           width: auto;
-          max-width: 220px;
+          max-width: 200px;
           object-fit: contain;
           display: block;
           transition: opacity .2s;
