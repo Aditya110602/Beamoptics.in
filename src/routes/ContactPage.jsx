@@ -55,7 +55,7 @@ const OFFICE_LOCATIONS = [
   {
     title: "Head Office",
     address:
-      "Pap J 188, J Block, 2nd Floor, Near Quality Forum Circle, Gawali Mata Chowk, Bhosari - 411026",
+      "Unit No 1,PLOT NO EL 15,Teerth Business Centre, EL Block, MIDC, Bhosari-411026",
   },
   {
     title: "Technical Center Address",
